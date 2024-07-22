@@ -22,21 +22,21 @@ const fetchTopStories = async () => {
 };
 
 const StoryItem = ({ story }) => (
-  <Card className="mb-4">
-    <CardHeader>
+  <Card className="mb-4 border-blue-600">
+    <CardHeader className="bg-blue-600 text-white">
       <CardTitle className="text-lg">{story.title}</CardTitle>
     </CardHeader>
-    <CardContent>
-      <p className="text-sm text-muted-foreground mb-2">
-        Upvotes: {story.score}
+    <CardContent className="bg-yellow-100">
+      <p className="text-sm text-blue-600 mb-2">
+        Uppröster: {story.score}
       </p>
       <a
         href={story.url}
         target="_blank"
         rel="noopener noreferrer"
-        className="text-primary hover:underline inline-flex items-center"
+        className="text-blue-600 hover:underline inline-flex items-center"
       >
-        Read more
+        Läs mer
         <ExternalLink className="ml-1 h-4 w-4" />
       </a>
     </CardContent>
@@ -46,13 +46,13 @@ const StoryItem = ({ story }) => (
 const SkeletonLoader = () => (
   <div className="space-y-4">
     {[...Array(5)].map((_, index) => (
-      <Card key={index} className="mb-4">
-        <CardHeader>
-          <Skeleton className="h-6 w-3/4" />
+      <Card key={index} className="mb-4 border-blue-600">
+        <CardHeader className="bg-blue-600">
+          <Skeleton className="h-6 w-3/4 bg-yellow-200" />
         </CardHeader>
-        <CardContent>
-          <Skeleton className="h-4 w-1/4 mb-2" />
-          <Skeleton className="h-4 w-1/3" />
+        <CardContent className="bg-yellow-100">
+          <Skeleton className="h-4 w-1/4 mb-2 bg-blue-200" />
+          <Skeleton className="h-4 w-1/3 bg-blue-200" />
         </CardContent>
       </Card>
     ))}
@@ -70,17 +70,17 @@ const HackerNewsTopStories = () => {
     story.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  if (error) return <div>An error occurred: {error.message}</div>;
+  if (error) return <div className="text-red-600">Ett fel inträffade: {error.message}</div>;
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-6">Hacker News Top 100 Stories</h1>
+    <div className="container mx-auto px-4 py-8 bg-gradient-to-b from-blue-100 to-yellow-100 min-h-screen">
+      <h1 className="text-3xl font-bold mb-6 text-blue-600">Svenska Hacker News: Topp 100 Nyheter</h1>
       <Input
         type="text"
-        placeholder="Search stories..."
+        placeholder="Sök nyheter..."
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
-        className="mb-6"
+        className="mb-6 border-blue-600"
       />
       {isLoading ? (
         <SkeletonLoader />

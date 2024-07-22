@@ -7,7 +7,7 @@ import HackerNewsTopStories from "./pages/HackerNewsTopStories.jsx";
  */
 export const navItems = [
   {
-    title: "Home",
+    title: "Hem",
     to: "/",
     icon: <Home className="h-4 w-4" />,
     page: <Index />,

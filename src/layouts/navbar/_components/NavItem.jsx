@@ -8,8 +8,8 @@ export const NavItem = ({ to, children, className }) => (
       cn(
         "transition-colors",
         isActive
-          ? "text-foreground"
-          : "text-muted-foreground hover:text-foreground",
+          ? "text-yellow-400"
+          : "text-white hover:text-yellow-200",
         className,
       )
     }
